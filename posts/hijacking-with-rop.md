@@ -8,7 +8,7 @@
 
 So you got an arbitrary read/write primitive in the Windows kernel. Sick. Now what? Back in the day you'd just drop some shellcode in `KUSER_SHARED_DATA+0x800`, flip a PTE to make it executable, overwrite `HalDispatchTable+0x8`, and call it a day. Token stealing shellcode goes brr, `whoami` says `NT AUTHORITY\SYSTEM`, gg.
 
-But Microsoft said nah. With **HVCI** (Hypervisor-Protected Code Integrity), the hypervisor enforces that no kernel memory page is ever writable **and** executable at the same time. Your shellcode can sit in memory all day long — it's never gonna execute. The EPTEs (Extended Page Table Entries) managed by the hypervisor are the "root of truth" now, and they don't care what your PTE says.
+But Microsoft said nah. With **HVCI** (Hypervisor-Protected Code Integrity), the hypervisor enforces that no kernel memory page is ever writable **and** executable at the same time. Your shellcode can sit in memory all day long it's never gonna execute. The EPTEs (Extended Page Table Entries) managed by the hypervisor are the "root of truth" now, and they don't care what your PTE says.
 
 On top of that, **kCFG** (Kernel Control Flow Guard) validates every indirect call against a bitmap of legit targets. And that bitmap? Protected by SLAT. Good luck modifying it with your write primitive.
 
