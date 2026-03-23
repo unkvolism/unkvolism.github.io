@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>loading...</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+
+    <div class="topbar">
+        <a href="index.html" class="site-name">Limbo</a>
+        <nav>
+            <a href="about.html">about</a>
+            <a href="posts.html">posts</a>
+        </nav>
+    </div>
+
+    <div class="page-body">
+        <article class="post-full">
+            <header class="post-header" id="post-header">
+                <h1 class="post-full-title" id="post-title"></h1>
+                <span class="post-date" id="post-date"></span>
+                <div class="post-tags" id="post-tags"></div>
+            </header>
+            <div class="post-body" id="post-body">
+                <p class="loading-text" style="color: var(--text-dim); font-style: italic;">loading...</p>
+            </div>
+        </article>
+
+        <div class="post-nav">
+            <a href="posts.html">&larr; back to posts</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>2026</p>
+        <p class="footer-quote">"nel mezzo del cammin di nostra vita, mi ritrovai per una selva oscura"</p>
+    </footer>
+
+    <script>
+        (async function () {
+            const params = new URLSearchParams(window.location.search);
+            const slug = params.get('slug');
+
+            if (!slug) {
+                document.getElementById('post-body').innerHTML = '<p>post not found.</p>';
+                return;
+            }
+
+            // load post metadata from posts.json
+            let meta = null;
+            try {
+                const res = await fetch('posts.json');
+                const posts = await res.json();
+                meta = posts.find(p => p.slug === slug);
+            } catch (e) {
+                // metadata is optional, continue without it
+            }
+
+            if (meta) {
+                document.getElementById('post-title').textContent = meta.title;
+                document.getElementById('post-date').textContent = meta.date;
+                document.title = meta.title;
+
+                const tagsEl = document.getElementById('post-tags');
+                meta.tags.forEach(tag => {
+                    const span = document.createElement('span');
+                    span.className = 'tag';
+                    span.textContent = tag;
+                    tagsEl.appendChild(span);
+                });
+            }
+
+            // load and render markdown
+            try {
+                const mdRes = await fetch(`posts/${slug}.md`);
+                if (!mdRes.ok) throw new Error('not found');
+                const md = await mdRes.text();
+
+                marked.setOptions({
+                    breaks: false,
+                    gfm: true
+                });
+
+                document.getElementById('post-body').innerHTML = marked.parse(md);
+
+                // if no metadata, try to extract title from first h1
+                if (!meta) {
+                    const h1 = document.querySelector('.post-body h1');
+                    if (h1) {
+                        document.getElementById('post-title').textContent = h1.textContent;
+                        document.title = h1.textContent;
+                        h1.remove();
+                    }
+                }
+            } catch (e) {
+                document.getElementById('post-body').innerHTML = '<p>could not load post.</p>';
+            }
+        })();
+    </script>
+
+</body>
+</html>

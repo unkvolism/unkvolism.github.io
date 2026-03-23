@@ -1,0 +1,9 @@
+[
+    {
+        "slug": "hijacking-with-rop",
+        "title": "Hijacking Kernel Execution with ROP Chains in the Age of HVCI",
+        "date": "march 22 2026",
+        "excerpt": "Walking through a hands-on kernel exploitation technique that turns an arbitrary read/write primitive into full kernel API calls via ROP chains",
+        "tags": ["kernel", "exploitation", "ropchain", "hvci"]
+    }
+]
