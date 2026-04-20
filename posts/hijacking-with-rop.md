@@ -1,6 +1,3 @@
-# Hijacking Kernel Execution with ROP Chains in the Age of HVCI
-
-*Or: How i stopped worrying about shellcode and learned to love `pop rax; ret`*
 
 ---
 
