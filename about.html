@@ -20,65 +20,112 @@
                 <a href="posts.html">posts</a>
             </nav>
         </div>
-
         <div class="page-body">
             <h1 class="page-title">about</h1>
-
             <div class="figure">
                 <img
                     class="wide-image"
                     src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Gustave_Dore_Inferno1.jpg"
                     alt="Doré - The Panther"
                 />
-                <figcaption>Gustave Doré — Inferno, Canto I</figcaption>
+                <figcaption>Gustave Doré Inferno, Canto I</figcaption>
             </div>
-
             <div class="about-content">
                 <section class="about-section">
                     <h3>who i am</h3>
                     <p>
-                        Low-level computing enthusiast driven by the need to
-                        understand how things work beneath the surface — from
-                        the kernel down to the hardware. I enjoy tearing apart
-                        systems, reversing binaries, and exploring the deepest
-                        layers of the OS.
+                        Red team operator and offensive security researcher with
+                        a deep obsession for low-level Windows internals. I
+                        spend most of my time at the intersection of kernel
+                        exploitation, hypervisor research, and reverse
+                        engineering tearing apart security mechanisms to
+                        understand how they work and where they fail.
                     </p>
                     <p>
-                        Nothing here is definitive — it's a space for constant
-                        learning.
+                        My current focus is Windows kernel and hypervisor
+                        security: VBS/Hyper-V architecture, VTL isolation
+                        boundaries, and the internals of
+                        <code>securekernel.exe</code>. When I'm not staring at
+                        IDA or WinDbg, I'm probably writing about what I found.
                     </p>
                 </section>
 
                 <section class="about-section">
                     <h3>areas of interest</h3>
                     <ul>
-                        <li>Windows Internals</li>
-                        <li>Kernel Exploitation</li>
-                        <li>Driver Development</li>
-                        <li>Hypervisors</li>
-                        <li>Reverse Engineering</li>
+                        <li>Windows Kernel Exploitation</li>
+                        <li>Hypervisor Internals (VBS, Hyper-V, WHP API)</li>
+                        <li>Secure Kernel &amp; VTL 0 → 1 Boundaries</li>
+                        <li>Driver Development &amp; Analysis</li>
+                        <li>Reverse Engineering (IDA Pro, WinDbg)</li>
+                        <li>EDR Evasion &amp; Bypass Research</li>
                     </ul>
                 </section>
+
+                <section class="about-section">
+                    <h3>projects</h3>
+                    <ul>
+                        <li>
+                            <strong>VulnDriver</strong> - Vulnerable kernel
+                            driver demonstrating UAF via non-atomic reference
+                            counting, race condition exploitation, and LPE to
+                            SYSTEM.
+                        </li>
+                        <li>
+                            <strong>Mirage-RS</strong> - Rust reimplementation
+                            of Akamai's Mirage technique for VBS enclave payload
+                            staging across VTL boundaries.
+                        </li>
+                        <li>
+                            <strong>VFCoop</strong> - IDAPython vfGadget
+                            enumerator for COOP (Counterfeit Object-Oriented
+                            Programming) gadget discovery.
+                        </li>
+                        <li>
+                            <strong>Volstgalph</strong> - x86-64 4-level paging
+                            simulator for studying virtual address translation
+                            mechanics.
+                        </li>
+                        <li>
+                            <strong>Solemn</strong> - HVCI driver blocklist
+                            automation tooling.
+                        </li>
+                        <li><strong>Misery</strong> - EDR bypass loader.</li>
+                    </ul>
+                </section>
+
+                <section class="about-section"></section>
+
+                <section class="about-section"></section>
 
                 <div class="epigraph">
                     <p>
                         "Consider your origin; you were not born to live like
                         brutes, but to follow virtue and knowledge."
                     </p>
-                    <cite>— Inferno, Canto XXVI</cite>
+                    <cite>Inferno, Canto XXVI</cite>
                 </div>
 
                 <section class="about-section">
                     <h3>contact</h3>
                     <ul>
-                        <li>github: <a href="#">@unkvolism</a></li>
-                        <li>email: <a href="#">sorahed@proton.me</a></li>
+                        <li>
+                            github:
+                            <a href="https://github.com/unkvolism"
+                                >@unkvolism</a
+                            >
+                        </li>
+                        <li>
+                            email:
+                            <a href="mailto:sorahed@proton.me"
+                                >sorahed@proton.me</a
+                            >
+                        </li>
                         <li>twitter: <a href="#">@ExallocatePool2</a></li>
                     </ul>
                 </section>
             </div>
         </div>
-
         <footer class="footer">
             <p>2026</p>
             <p class="footer-quote">
