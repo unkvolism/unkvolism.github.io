@@ -1,5 +1,12 @@
 [
   {
+    "slug": "hyper-v-cpuid-leafs",
+    "title": "Undocumented bits in a Hyper-V CPUID leaf, found by accident",
+    "date": "mai 11 2026",
+    "excerpt": "A Rust exercise that turned into spotting undocumented bits in Hyper-V CPUID hardware features leaf on Windows 11 25H2.",
+    "tags":["hyper-v", "hypervisor", "research"]
+  },
+    {
     "slug": "hunting-bugs-on-securekernel",
     "title": "Hunting Bugs on SecureKernel: Analysing case28 attack surface",
     "date": "april 20 2026",
@@ -13,4 +20,5 @@
     "excerpt": "Walking through a hands-on kernel exploitation technique that turns an arbitrary read/write primitive into full kernel API calls via ROP chains",
     "tags": ["kernel", "exploitation", "ropchain", "hvci"]
   }
+
 ]
